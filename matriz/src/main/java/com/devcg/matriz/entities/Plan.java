@@ -8,6 +8,6 @@ import lombok.Data;
 @Data
 @Table(name = "tb_plan")
 public class Plan {
-    private long id;
+    private Long id;
     private String planType;
 }
