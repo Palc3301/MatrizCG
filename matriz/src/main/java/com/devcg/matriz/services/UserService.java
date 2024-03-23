@@ -12,62 +12,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UserService {
+public interface UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+        @Transactional(readOnly = true)
+        UserDTO findById(Long id);
 
-    @Transactional(readOnly = true)
-    public UserDTO findById(Long id) {
-        User user = userRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("User not found"));
-        return new UserDTO(user);
-    }
+        List<UserDTO> findAll();
 
-    //Converte a lista de User em um fluxo.
-    //Transforma cada User em um UserDto.
-    //Coleta os UserDto em uma lista.
-    public List<UserDTO> findAll() {
-        List<User> users = userRepository.findAll();
-        return users.stream().map(UserDTO::new).collect(Collectors.toList());
-    }
+        @Transactional
+        UserDTO insert(UserDTO dto);
 
-    @Transactional
-    public UserDTO insert(UserDTO dto) {
-        User user = new User();
-        copyDtoToEntity(dto, user);
-        user = userRepository.save(user);
-        return new UserDTO(user);
-    }
+        @Transactional
+        UserDTO update(Long id, UserDTO dto);
 
-    @Transactional
-    public UserDTO update(Long id, UserDTO dto) {
-        try {
-            User user = userRepository.getReferenceById(id);
-            copyDtoToEntity(dto, user);
-            user = userRepository.save(user);
-            return new UserDTO(user);
-        }
-        catch (EntityNotFoundException e) {
-            throw new RuntimeException("User not found");
-        }
-    }
+        @Transactional
+        void delete(Long id);
 
-    @Transactional
-    public void delete(Long id) {
-        if(!userRepository.existsById(id)) {
-            throw new RuntimeException("User not found");
-        }
-        try {
-            userRepository.deleteById(id);
-        } catch (Exception e) {
-            throw new RuntimeException("Database exception");
-        }
-    }
-
-    private void copyDtoToEntity(UserDTO dto, User user) {
-        user.setName(dto.getName());
-        user.setEmail(dto.getEmail());
-        user.setPassword(dto.getPassword());
-    }
+        void copyDtoToEntity(UserDTO dto, User user);
 }

@@ -1,8 +1,7 @@
 package com.devcg.matriz.controllers;
 
 import com.devcg.matriz.dto.PatientDTO;
-import com.devcg.matriz.services.PatientService;
-import org.apache.coyote.Response;
+import com.devcg.matriz.services.impl.PatientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +14,9 @@ import java.util.List;
 public class PatientController {
 
     @Autowired
-    private PatientService patientService;
+    private PatientServiceImpl patientService;
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<PatientDTO> findById(@PathVariable Long id) {
         PatientDTO dto = patientService.findById(id);
         return ResponseEntity.ok(dto);

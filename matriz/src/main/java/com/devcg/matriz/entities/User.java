@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "tb_user")
+@Entity
 public class User {
 
     @Id
@@ -21,8 +22,4 @@ public class User {
     @Column(unique = true)
     private String email;
     private String password;
-    @OneToMany(mappedBy = "patient")
-    private List<Patient> patients = new ArrayList<>();
-
-
 }

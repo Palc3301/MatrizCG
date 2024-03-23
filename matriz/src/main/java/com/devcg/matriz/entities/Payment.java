@@ -7,6 +7,7 @@ import java.time.Instant;
 
 @Data
 @Table(name = "tb_payment")
+@Entity
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
