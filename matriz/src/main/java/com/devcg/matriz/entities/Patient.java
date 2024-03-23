@@ -1,9 +1,13 @@
 package com.devcg.matriz.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "tb_patient")
 public class Patient {
     @Id

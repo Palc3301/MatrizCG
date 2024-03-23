@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
+public class UserDTO {
 
     private Long id;
 
@@ -21,11 +21,11 @@ public class UserDto {
     @NotBlank(message = "Campo requerido")
     private String email;
 
-    @Size(min = 10, message = "Descrição precisa ter no mínimo 10 caracteres")
+    @Size(min = 8, message = "Descrição precisa ter no mínimo 10 caracteres")
     private String password;
 
 
-    public UserDto(User user) {
+    public UserDTO(User user) {
         this.id = user.getId();
         this.name = user.getName();
         this.email = user.getEmail();

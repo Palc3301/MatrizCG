@@ -1,6 +1,6 @@
 package com.devcg.matriz.controllers;
 
-import com.devcg.matriz.dto.UserDto;
+import com.devcg.matriz.dto.UserDTO;
 import com.devcg.matriz.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,25 +17,25 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDto> findById(@PathVariable Long id) {
-        UserDto dto = userService.findById(id);
+    public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
+        UserDTO dto = userService.findById(id);
         return ResponseEntity.ok(dto);
     }
 
     @GetMapping
-    public ResponseEntity<List<UserDto>> findAll() {
-        List<UserDto> list = userService.findAll();
+    public ResponseEntity<List<UserDTO>> findAll() {
+        List<UserDTO> list = userService.findAll();
         return ResponseEntity.ok(list);
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> insert(@RequestBody UserDto dto) {
+    public ResponseEntity<UserDTO> insert(@RequestBody UserDTO dto) {
         dto = userService.insert(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(dto);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserDto> update(@PathVariable Long id, @RequestBody UserDto dto) {
+    public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody UserDTO dto) {
         dto = userService.update(id, dto);
         return ResponseEntity.ok(dto);
     }
