@@ -1,6 +1,7 @@
 package com.devcg.matriz.controllers;
 
 import com.devcg.matriz.dto.UserDTO;
+import com.devcg.matriz.services.UserService;
 import com.devcg.matriz.services.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +15,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserServiceImpl userService;
+    private UserService userService;
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> findById(@PathVariable Long id) {

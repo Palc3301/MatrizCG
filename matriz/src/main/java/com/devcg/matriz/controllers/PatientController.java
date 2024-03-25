@@ -1,6 +1,7 @@
 package com.devcg.matriz.controllers;
 
 import com.devcg.matriz.dto.PatientDTO;
+import com.devcg.matriz.services.PatientService;
 import com.devcg.matriz.services.impl.PatientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +15,7 @@ import java.util.List;
 public class PatientController {
 
     @Autowired
-    private PatientServiceImpl patientService;
+    private PatientService patientService;
 
     @GetMapping("/{id}")
     public ResponseEntity<PatientDTO> findById(@PathVariable Long id) {

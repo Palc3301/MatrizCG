@@ -22,5 +22,4 @@ public interface PatientService {
 
         void delete(Long id);
 
-        void copyDtoToEntity(PatientDTO dto, Patient patient);
 }

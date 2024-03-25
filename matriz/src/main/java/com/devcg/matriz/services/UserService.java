@@ -28,5 +28,4 @@ public interface UserService {
         @Transactional
         void delete(Long id);
 
-        void copyDtoToEntity(UserDTO dto, User user);
 }

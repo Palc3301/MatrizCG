@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PatientServiceImpl {
@@ -23,7 +24,7 @@ public class PatientServiceImpl {
 
     public List<PatientDTO> findAll() {
         List<Patient> patients = patientRepository.findAll();
-        return patients.stream().map(PatientDTO::new).collect(java.util.stream.Collectors.toList());
+        return patients.stream().map(PatientDTO::new).collect(Collectors.toList());
     }
 
     public PatientDTO insert(PatientDTO dto) {
