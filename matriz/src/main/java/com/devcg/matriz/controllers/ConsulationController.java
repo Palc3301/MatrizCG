@@ -3,6 +3,7 @@ package com.devcg.matriz.controllers;
 import com.devcg.matriz.dto.ConsultationDTO;
 import com.devcg.matriz.services.ConsultationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +31,7 @@ public class ConsulationController {
     @PostMapping
     public ResponseEntity<ConsultationDTO> insert(@RequestBody ConsultationDTO dto) {
         dto = consultationService.insert(dto);
-        return ResponseEntity.status(201).body(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(dto);
     }
 
     @PutMapping("/{id}")
